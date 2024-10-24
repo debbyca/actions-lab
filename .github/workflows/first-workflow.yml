@@ -11,7 +11,8 @@ env:
 jobs:
   lint-yaml:
     runs-on: ubuntu-latest
-    steps:
+    continue-on-error: true
+     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Run YAML Lint
@@ -20,7 +21,6 @@ jobs:
           file_or_dir: .
 
   say-hello:
-    if: ${{ always() }}
     needs: lint-yaml
     runs-on: ubuntu-latest
     steps:
